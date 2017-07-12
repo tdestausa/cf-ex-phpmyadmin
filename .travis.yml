@@ -1,0 +1,33 @@
+language: php
+sudo: false
+cache: bundler
+php:
+- '5.5'
+- '5.6'
+- '7.0'
+- '7.1'
+- hhvm
+- nightly
+os:
+- linux
+- osx
+matrix:
+  exclude:
+  - rvm: 1.8.7
+    os: osx
+  - rvm: 1.9.2
+    os: osx
+  - rvm: 2.1.0
+    os: osx
+  - rvm: jruby
+    os: osx
+deploy:
+  provider: cloudfoundry
+  api: https://api.fr.cloud.gov
+  username: theodros.desta
+  password:
+    secure: NUDuoj0CTx/I1bdEx7+a5ud/YJYz/NtMdlMExIoSAUJqR6OT/ALuZ4jNrIlw0AgZmU6ohxKumeSDGj30BoH1BtHK1jPpOyQBoAJTP4a1/OeiA4GMhndt+cp/xzfkanLqhVYiEjDxsnyev3ZKBHyVcOoTmXQw+H2mBYPqaaX51DI=
+  organization: gsa-spba
+  space: staging
+  on:
+    repo: travis-ci/travis.rb
