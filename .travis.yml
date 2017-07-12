@@ -3,23 +3,11 @@ sudo: false
 cache: bundler
 php:
 - '5.6'
-- '7.0'
-- '7.1'
-- hhvm
-- nightly
+before_script:
+- phpenv config -rm xdebug.ini #enable if phpunit is needed
 os:
 - linux
 - osx
-matrix:
-  exclude:
-  - rvm: 1.8.7
-    os: osx
-  - rvm: 1.9.2
-    os: osx
-  - rvm: 2.1.0
-    os: osx
-  - rvm: jruby
-    os: osx
 deploy:
   provider: cloudfoundry
   api: https://api.fr.cloud.gov
